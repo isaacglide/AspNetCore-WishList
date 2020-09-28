@@ -23,6 +23,7 @@ namespace WishList
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            
             if(env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -31,6 +32,7 @@ namespace WishList
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+            app.UseMvcWithDefaultRoute();
             app.UseRouting();
             app.UseEndpoints(endpoints => {endpoints.MapDefaultControllerRoute();});
         }
