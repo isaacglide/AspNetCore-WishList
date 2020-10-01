@@ -1,9 +1,23 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using WishList.Data;
 
-public class Class1
+namespace WishList.Controllers
 {
-	public Class1()
-	{
-	}
+    public class ItemController : Controller
+    {
+        private readonly ApplicationDbContext _context;
+
+        public ItemController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        public IActionResult Index()
+        {
+            var model = _context.Items.ToList();
+            return View("Index", model);
+        }
+    }
 }
